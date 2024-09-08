@@ -1,0 +1,106 @@
+<div class="container mt-5">
+    <!-- Dropdown to select a user -->
+    <div class="form-group">
+        <label for="userSelect">Select a user</label>
+
+        <select class="form-control  form-select w-50" id="userSelect" (change)="onUserSelect($event)">
+            <option *ngFor="let user of products" [value]="user.id">
+                {{ user.name }}
+            </option>
+        </select>
+    </div>
+
+    <!-- Card to display selected user details -->
+
+    <div class="card mt-3"  *ngIf="selectedUser">
+            <div class="card-header">
+                Edit {{selectedUser.name}}'s details
+            </div>
+            <div class="card-body">
+                <div class="mt-4">
+                    <div class="mt-4">
+                        <form (ngSubmit)="onSaveUser()">
+                          <div class="row">
+                            <!-- Column 1 -->
+                            <div class="col-sm-12 col-md-6">
+                              <div class="form-group">
+                                <label for="userName">Name</label>
+                                <input type="text" class="form-control" id="userName" [(ngModel)]="selectedUser.name" name="name" required>
+                              </div>
+                            </div>
+                    
+                            <!-- Column 2 -->
+                            <div class="col-sm-12 col-md-6">
+                              <div class="form-group">
+                                <label for="userEmail">Email</label>
+                                <input type="email" class="form-control" id="userEmail" [(ngModel)]="selectedUser.email" name="email" required>
+                              </div>
+                            </div>
+                    
+                            <!-- Column 1 -->
+                            <div class="col-sm-12 col-md-6">
+                              <div class="form-group">
+                                <label for="userUsername">Username</label>
+                                <input type="text" class="form-control" id="userUsername" [(ngModel)]="selectedUser.username" name="username" required>
+                              </div>
+                            </div>
+                    
+                            <!-- Column 2 -->
+                            <div class="col-sm-12 col-md-6">
+                              <div class="form-group">
+                                <label for="userStreet">Street</label>
+                                <input type="text" class="form-control" id="userStreet" [(ngModel)]="selectedUser.address.street" name="street" required>
+                              </div>
+                            </div>
+                    
+                            <!-- Column 1 -->
+                            <div class="col-sm-12 col-md-6">
+                              <div class="form-group">
+                                <label for="userSuite">Suite</label>
+                                <input type="text" class="form-control" id="userSuite" [(ngModel)]="selectedUser.address.suite" name="suite" required>
+                              </div>
+                            </div>
+                    
+                            <!-- Column 2 -->
+                            <div class="col-sm-12 col-md-6">
+                              <div class="form-group">
+                                <label for="userCity">City</label>
+                                <input type="text" class="form-control" id="userCity" [(ngModel)]="selectedUser.address.city" name="city" required>
+                              </div>
+                            </div>
+                    
+                            <!-- Column 1 -->
+                            <div class="col-sm-12 col-md-6">
+                              <div class="form-group">
+                                <label for="userZipcode">Zipcode</label>
+                                <input type="text" class="form-control" id="userZipcode" [(ngModel)]="selectedUser.address.zipcode" name="zipcode" required>
+                              </div>
+                            </div>
+                    
+                            <!-- Column 2 -->
+                            <div class="col-sm-12 col-md-6">
+                              <div class="form-group">
+                                <label for="userLat">Latitude</label>
+                                <input type="text" class="form-control" id="userLat" [(ngModel)]="selectedUser.address.geo.lat" name="lat" required>
+                              </div>
+                            </div>
+                    
+                            <!-- Column 1 -->
+                            <div class="col-sm-12 col-md-6">
+                              <div class="form-group">
+                                <label for="userLng">Longitude</label>
+                                <input type="text" class="form-control" id="userLng" [(ngModel)]="selectedUser.address.geo.lng" name="lng" required>
+                              </div>
+                            </div>
+                          </div>
+                    
+                          <!-- Submit button -->
+                          <div class="mt-3">
+                            <button type="submit" class="btn btn-dark">Save Changes</button>
+                          </div>
+                        </form>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
